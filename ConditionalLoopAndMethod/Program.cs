@@ -15,13 +15,15 @@ namespace ConditionalLoopAndMethod
             Console.Write("Enter a range: ");
             int range = Int32.Parse(Console.ReadLine());
 
+            string results = IsWithinRange(num, target, range) ? "It's within range." : "It's not within range.";
+
             // TODO: Write the result by calling IsWithinRange
-            Console.WriteLine($"Given a starting number of: {num} and a target number: {target}. It's {IsWithinRange(num,target,range)} ");
+            Console.WriteLine($"Given a starting number of: {num} and a target number: {target}. {results}");
         }
 
         private static bool IsWithinRange(int num, int target, int range)
         {
-            return (num - target) <= range;
+            return Math.Abs(num - target) <= range;
         }
 
     }
