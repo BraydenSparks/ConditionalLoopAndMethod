@@ -6,29 +6,24 @@ namespace ConditionalLoopAndMethod
     {
         static void Main(string[] args)
         {
-            //Console.Write("Enter an initial number: ");
-            //int num = Int32.Parse(Console.ReadLine());
+            //console.write("enter an initial number: ");
+            //int num = int32.parse(console.readline());
 
-            //Console.Write("Enter a target number: ");
-            //int target = Int32.Parse(Console.ReadLine());
+            //console.write("enter a target number: ");
+            //int target = int32.parse(console.readline());
 
-            //Console.Write("Enter a range: ");
-            //int range = Int32.Parse(Console.ReadLine());
+            //console.write("enter a range: ");
+            //int range = int32.parse(console.readline());
 
-            //string results = IsWithinRange(num, target, range) ? "It's within range." : "It's not within range.";
-            //Console.WriteLine($"Given a starting number of: {num} and a target number: {target}. {results}");
+            //string results = iswithinrange(num, target, range) ? "it's within range." : "it's not within range.";
+            //console.writeline($"given a starting number of: {num} and a target number: {target}. {results}");
 
 
-            Console.Write("Do we have power? (y/n): ");
-            bool hasPower = Console.ReadLine().ToLower() == "y";
+            bool haspower = PromptUser("Do we have power? (y/n): ") == "y";
+            bool haspaper = PromptUser("Do we have paper? (y/n): ") == "y";
+            int inklevel = PromptUserInt("What is the current ink level: ");
 
-            Console.Write("Do we have paper? (y/n): ");
-            bool hasPaper = Console.ReadLine().ToLower() == "y";
-
-            Console.Write("What is the current ink level: ");
-            int inkLevel = Int32.Parse(Console.ReadLine());
-
-            PrintDoc(hasPower, hasPaper, inkLevel);
+            PrintDoc(haspower, haspaper, inklevel);
         }
 
         private static bool IsWithinRange(int num, int target, int range)
@@ -40,6 +35,23 @@ namespace ConditionalLoopAndMethod
         {
             string result = hasPaper & hasPower & inkLevel >= 10 ? "Printing" : "Unable to print";
             Console.WriteLine(result);
+        }
+
+        private static string PromptUser(string message)
+        {
+            Console.Write(message);
+            return Console.ReadLine();
+        }
+
+        private static int PromptUserInt(string message)
+        {
+            //while input is invalid, ask them to comply
+            int result;
+            while(!int.TryParse(PromptUser(message), out result))
+            {
+                PromptUser("Invalid input! Press enter to retry.");
+            }
+            return result;
         }
 
     }
