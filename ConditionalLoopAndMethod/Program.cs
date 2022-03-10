@@ -6,7 +6,15 @@ namespace ConditionalLoopAndMethod
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // TODO: Implement method to check if a number is in range
+
+
         }
+
+        private static bool IsWithinRange(int num1, int target, int range)
+        {
+            return (num1 - target) <= range;
+        }
+
     }
 }
